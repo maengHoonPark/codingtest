@@ -1,21 +1,26 @@
 package programmers.입문;
 
+import java.util.Arrays;
+
 public class 최댓값만들기 {
     public static void main(String[] args) {
-        int[] numbers = {1,2,3,4,5};
+        int[] numbers = {0,31,24,10,1,9};
         System.out.println(solution(numbers));
     }
     public static int solution(int[] numbers) {
-        int temp = numbers[0];
-        int temp2 = numbers[0];
-        for (int i = 0; i < numbers.length; i++) {
-            if(temp < numbers[i]){
-                temp = numbers[i];
-            }
-            if (temp < temp2){
-                temp2 = numbers[i];
+//        Arrays.sort(numbers);
+//        int n = numbers.length;
+//        return numbers[n-1] * numbers[n-2];
+        int max1 = Integer.MIN_VALUE;
+        int max2 = Integer.MIN_VALUE;
+        for (int n :  numbers) {
+            if ( n > max1) {
+                max2 = max1;
+                max1 = n;
+            } else if (n > max2) {
+                max2 = n;
             }
         }
-        return temp * temp2;
+        return max1 * max2;
     }
 }
